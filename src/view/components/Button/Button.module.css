@@ -1,0 +1,37 @@
+.button {
+    min-width: 40px;
+    height: 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+
+    border: none;
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 11px 11px;
+}
+
+.text_default {
+    white-space: nowrap;
+}
+
+.button_default {
+    background-color: var(--purple-default);
+    color: var(--white);
+}
+
+.button_secondary {
+    background-color: var(--white);
+    color: var(--grey-dark);
+    border: 1px solid var(--grey-dark);
+}
+
+.seasonCard {
+    margin-top: 55px;
+    display: flex;
+    justify-content: center;
+}

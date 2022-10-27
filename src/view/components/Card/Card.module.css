@@ -1,0 +1,26 @@
+.card {
+    width: 331px;
+    height: 416px;
+    background-color: var(--white);
+    border: 5px solid var(--purple-default);
+    border-radius: 30px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    transition: 1s;
+}
+
+.titleArea {
+    font-size: 23px;
+    padding-top: 25px;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.imageWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}

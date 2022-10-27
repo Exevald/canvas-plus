@@ -1,0 +1,70 @@
+.mainMenu {
+    padding-top: 150px;
+    padding-left: 0;
+}
+
+.mainMenu__cardsWrapper {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.mainMenu__card {
+    width: 331px;
+    height: 416px;
+    background-color: white;
+    border: 5px solid #8363FF;
+    border-radius: 30px;
+}
+
+.mainMenu__card:hover {
+    transform: scale(1.05);
+    transition: 1s;
+}
+
+.card__titleArea {
+    font-size: 23px;
+    padding-top: 25px;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.card__imagePreviewWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.card__buttonWrapper {
+    margin-top: 55px;
+    display: flex;
+    justify-content: center;
+}
+
+.card__button {
+    width: 131px;
+    height: 35px;
+    background-color: #8363FF;
+    border-radius: 17px;
+    text-decoration: none;
+    border: none;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.card__button:disabled {
+    background-color: #ccc;
+    cursor: revert;
+}
+
+@media screen and (max-width: 1100px) {
+    .mainMenu__cardsWrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .mainMenu__card {
+        margin-bottom: 20px;
+    }
+}
