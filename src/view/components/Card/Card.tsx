@@ -1,16 +1,11 @@
 import styles from "./Card.module.css"
 import {Button} from "../Button/Button";
-
-interface CardProps {
-    viewStyle: 'seasonCard' | 'gameCard',
-    text: string,
-    imageSrc?: string,
-}
+import {CardType} from "../../../core/types/types";
 
 const Card = ({
                   text,
                   imageSrc,
-              }: CardProps) => {
+              }: CardType) => {
     return (
         <div className={`${styles.card}`}>
             <div className={`${styles.titleArea}`}>

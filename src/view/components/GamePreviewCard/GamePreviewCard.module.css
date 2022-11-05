@@ -1,0 +1,7 @@
+.gamePreviewCard {
+    min-width: 750px;
+    height: 420px;
+    border: 2px solid var(--grey-dark);
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px
+}

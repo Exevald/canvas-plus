@@ -10,9 +10,9 @@ import {Card} from "../../components/Card/Card";
 const MainMenu = () => {
     return (
         <div>
-            <TopPanel></TopPanel>
-            <div className={`${styles.mainMenu}`}>
-                <div className={`${styles.mainMenu__cardsWrapper}`}>
+            <TopPanel viewStyle={"mainMenu"}></TopPanel>
+            <div className={styles.seasonCards}>
+                <div className={styles.cardsWrapper}>
                     <Card viewStyle={"seasonCard"} text={"Сезон 2021"} imageSrc={Season2021Image}></Card>
                     <Card viewStyle={"seasonCard"} text={"Сезон 2022"} imageSrc={Season2022Image}></Card>
                     <Card viewStyle={"seasonCard"} text={"Сезон 2023"} imageSrc={Season2023Image}></Card>

@@ -1,12 +1,15 @@
 import React from 'react';
 import './App.css';
-import {MainMenu} from "./view/pages/MainMenu/MainMenu";
+import {GameCollection} from "./view/pages/GameCollection/GameCollection";
 
 
 function App() {
     return (
         <div>
-            <MainMenu></MainMenu>
+            <GameCollection></GameCollection>
+            <div>
+
+            </div>
         </div>
     );
 }

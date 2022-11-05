@@ -13,4 +13,6 @@
     --grey-dark: rgba(47, 51, 55, 1);
     --grey-60: rgba(187, 193, 211, 0.6);
     --wheat-default: rgba(254, 244, 238, 1);
+
+    font-family: 'Inter', sans-serif;
 }

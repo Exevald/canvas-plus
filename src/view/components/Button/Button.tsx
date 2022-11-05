@@ -2,7 +2,7 @@ import styles from "./Button.module.css"
 
 interface ButtonProps {
     viewStyle: 'default' | 'secondary',
-    pos: 'seasonCard' | 'gameCard',
+    pos?: 'seasonCard' | 'gameCard',
     text?: string
 }
 

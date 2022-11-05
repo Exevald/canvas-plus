@@ -13,6 +13,8 @@
     justify-content: center;
     position: relative;
     padding: 11px 11px;
+
+    cursor: pointer;
 }
 
 .text_default {
@@ -22,6 +24,10 @@
 .button_default {
     background-color: var(--purple-default);
     color: var(--white);
+}
+
+.button_default:hover {
+    background-color: var(--purple-dark);
 }
 
 .button_secondary {
