@@ -9,12 +9,12 @@ interface TopPanelProps {
 const TopPanel = (props: TopPanelProps) => {
     return (
         <div className={styles.topPanel}>
-            <p className={styles.imageWrapper}>
-                <img src={logoImage} className={styles.topPanel__logoImage} alt={"logoImage"}></img>
-            </p>
+            <div className={styles.imageWrapper}>
+                <img src={logoImage} className={styles.logoImage} alt={"logoImage"}></img>
+            </div>
             {props.viewStyle === "gameCollection" &&
-                <div className={styles.topPanel__buttonWrapper}>
-                    <Button viewStyle={"default"} text={"Вернуться в главное меню"}></Button>
+                <div className={styles.buttonWrapper}>
+                    <Button onClick={() => {}} viewStyle={"default"} text={"Вернуться в главное меню"}></Button>
                 </div>
             }
         </div>

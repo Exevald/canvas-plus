@@ -1,23 +1,21 @@
 .topPanel {
     display: flex;
-    /*justify-content: center;*/
-    /*position: relative;*/
     border-bottom: 2px solid var(--grey-dark);
-    max-width: 100%;
+    width: 100%;
     height: 85px;
+    justify-content: center;
 }
 
 .imageWrapper {
     display: flex;
-    align-items: center;
-    text-align: center;
+    align-self: center;
 }
 
-.topPanel__logoImage {
+.logoImage {
     cursor: pointer;
 }
 
-.topPanel__buttonWrapper {
+.buttonWrapper {
     display: flex;
     align-items: center;
 }

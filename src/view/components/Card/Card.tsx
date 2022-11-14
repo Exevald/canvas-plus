@@ -14,7 +14,7 @@ const Card = ({
             <div className={`${styles.imageWrapper}`}>
                 <img src={imageSrc} alt={"PreviewImage"}></img>
             </div>
-            <Button pos={"seasonCard"} viewStyle={"default"} text={"Поиграть!"}></Button>
+            <Button onClick={() => {}} pos={"seasonCard"} viewStyle={"default"} text={"Поиграть!"}></Button>
         </div>
     )
 }
