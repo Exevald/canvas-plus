@@ -1,4 +1,5 @@
 import styles from "./Button.module.css"
+import {Link} from "react-router-dom";
 
 interface ButtonProps {
     viewStyle: 'default' | 'secondary',
@@ -6,12 +7,19 @@ interface ButtonProps {
     iconType?: 'like' | 'info' | 'goLeft' | 'goRight' | 'lens'
     text?: string,
     onClick: () => void,
+    to?: string
+}
+
+const linkStyle = {
+    color: 'white',
 }
 
 const Button = ({
                     viewStyle,
                     text,
-                    pos
+                    pos,
+                    onClick,
+                    to,
                 }: ButtonProps) => {
     let buttonStyle = styles.button_default;
     let posStyle
@@ -38,10 +46,13 @@ const Button = ({
         <div className={`${posStyle}`}>
             <button
                 type="button"
+                onClick={onClick}
                 className={`${styles.button} ${buttonStyle}`}
             >
                 <div className={styles.text_default}>
-                    {text}
+                    {
+                        to !== undefined ? <Link to={to} style={linkStyle}>{text}</Link> : <>{text}</>
+                    }
                 </div>
             </button>
         </div>
@@ -51,6 +62,7 @@ const Button = ({
 const ButtonIcon = ({
                         iconType,
                         onClick,
+                        to,
                     }: ButtonProps) => {
     let buttonStyle;
 
@@ -77,6 +89,9 @@ const ButtonIcon = ({
             className={`${styles.iconButton} ${buttonStyle}`}
             onClick={onClick}
         >
+            {
+                to !== undefined ? <Link to={to}></Link> : <></>
+            }
         </button>
     )
 }
