@@ -59,11 +59,18 @@ const Button = ({
     )
 }
 
+interface ButtonIconProps {
+    iconType?: 'like' | 'info' | 'goLeft' | 'goRight' | 'lens'
+    onClick: () => void,
+    to?: string
+}
+
+
 const ButtonIcon = ({
                         iconType,
                         onClick,
                         to,
-                    }: ButtonProps) => {
+                    }: ButtonIconProps) => {
     let buttonStyle;
 
     switch (iconType) {

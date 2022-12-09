@@ -1,5 +1,4 @@
 import styles from "./Search.module.css"
-import LensIcon from "./Lens.svg"
 import {ButtonIcon} from "../Button/Button";
 
 const Search = () => {
@@ -10,7 +9,7 @@ const Search = () => {
                 className={styles.input}
             >
             </input>
-            <ButtonIcon viewStyle={"default"} iconType={"lens"} onClick={() => {}}></ButtonIcon>
+            <ButtonIcon iconType={"lens"} onClick={() => {}}></ButtonIcon>
         </div>
     )
 }

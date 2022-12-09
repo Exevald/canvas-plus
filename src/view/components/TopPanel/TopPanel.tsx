@@ -1,7 +1,6 @@
 import styles from "./TopPanel.module.css"
 import logoImage from "../../images/main-menu/logo.svg"
 import {Button} from "../Button/Button";
-import {Link} from "react-router-dom";
 
 interface TopPanelProps {
     viewStyle: 'mainMenu' | 'gameCollection'
@@ -12,7 +11,7 @@ const TopPanel = (props: TopPanelProps) => {
         <div className={styles.topPanel}>
             <div className={styles.logoWrapper}>
                 <div className={styles.imageWrapper}>
-                    <img src={logoImage} className={styles.logoImage} alt={"logoImage"}></img>
+                    <img src={logoImage} alt={"logoImage"}></img>
                 </div>
                 {props.viewStyle === "gameCollection" &&
                     <div className={styles.buttonWrapper}>
