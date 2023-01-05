@@ -15,10 +15,6 @@
     display: flex;
 }
 
-.logoImage:hover {
-    cursor: pointer;
-}
-
 .buttonWrapper {
     display: flex;
     margin: 0 0 0 auto;
