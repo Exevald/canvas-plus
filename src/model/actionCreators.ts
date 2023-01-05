@@ -20,7 +20,7 @@ function swipeGameRight(gameId: number) {
 
 function setLike() {
     return {
-        type: 'LIKE',
+        type: 'LIKE'
     }
 }
 
