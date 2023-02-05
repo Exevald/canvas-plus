@@ -1,9 +1,9 @@
 .button {
-    min-width: 40px;
-    height: 40px;
+    min-width: 5vw;
+    height: 4vh;
     font-family: 'Inter', sans-serif;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 1.25em;
 
     border: none;
     border-radius: 9px;
@@ -37,7 +37,7 @@
 }
 
 .seasonCard {
-    margin-top: 55px;
+    margin-top: 6.5vh;
     display: flex;
     justify-content: center;
 }

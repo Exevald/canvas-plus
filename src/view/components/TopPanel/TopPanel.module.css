@@ -1,6 +1,6 @@
 .topPanel {
     border-bottom: 2px solid var(--grey-dark);
-    height: 85px;
+    height: 10vh;
 }
 
 .logoWrapper {
@@ -13,6 +13,10 @@
 
 .imageWrapper {
     display: flex;
+}
+
+.image {
+    min-width: 23vw;
 }
 
 .buttonWrapper {
