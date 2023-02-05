@@ -1,20 +1,18 @@
-function addGame() {
+import {Actions} from "../core/types/types";
+
+function swipeGameLeft(gameId: string) {
+    console.log("a l")
     return {
-        type: 'ADD_GAME'
+        type: Actions.SWIPE_LEFT,
+        gameId: gameId,
     }
 }
 
-function swipeGameLeft(gameId: number) {
+function swipeGameRight(gameId: string) {
+    console.log("a r")
     return {
-        type: 'SWIPE_LEFT',
-        gameId
-    }
-}
-
-function swipeGameRight(gameId: number) {
-    return {
-        type: 'SWIPE_RIGHT',
-        gameId
+        type: Actions.SWIPE_RIGHT,
+        gameId: gameId,
     }
 }
 
@@ -24,4 +22,11 @@ function setLike() {
     }
 }
 
-export {addGame, swipeGameRight, swipeGameLeft, setLike}
+function setCurrentSeason(newSeason: string) {
+    return {
+        type: Actions.SET_CURRENT_SEASON,
+        newSeason: newSeason,
+    }
+}
+
+export {swipeGameRight, swipeGameLeft, setLike, setCurrentSeason}

@@ -11,16 +11,20 @@ import {AppDispatch} from "../../../model/store";
 import {swipeGameLeft, swipeGameRight} from "../../../model/actionCreators";
 
 function mapStateToProps(state: EditorType) {
-    return {
-        games: state.gameCollection.games,
-        gameId: state.gameCollection.selectedGameId,
+    const currentSeason = state.currentSeason;
+    const currentGameCollection = state.collections.find(collection => collection.season === currentSeason);
+    const selectedGameIndex = currentGameCollection?.games.findIndex(game => game.id === currentGameCollection.selectedGameId)
+    if (selectedGameIndex !== undefined) {
+        return {
+            selectedGameId: currentGameCollection?.games[selectedGameIndex].id,
+        }
     }
 }
 
 function mapDispatchToProps(dispatcher: AppDispatch) {
     return {
-        swipeLeft: (gameId: number) => dispatcher(swipeGameLeft(gameId)),
-        swipeRight: (gameId: number) => dispatcher(swipeGameRight(gameId))
+        swipeLeft: (gameId: string) => swipeGameLeft(gameId),
+        swipeRight: (gameId: string) => swipeGameRight(gameId),
     }
 }
 
@@ -28,7 +32,6 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 type GameCollectionProps = ConnectedProps<typeof connector>
 
 const GameCollection = (props: GameCollectionProps) => {
-
     return (
         <div>
             <TopPanel viewStyle={"gameCollection"}></TopPanel>
@@ -40,11 +43,11 @@ const GameCollection = (props: GameCollectionProps) => {
                     </div>
                 </div>
                 <div className={styles.sliderAreaWrapper}>
-                    <ButtonIcon iconType={"goLeft"} onClick={() => props.swipeLeft(props.gameId)}></ButtonIcon>
+                    <ButtonIcon iconType={"goLeft"} onClick={() => props.selectedGameId !== undefined ? props.swipeLeft(props.selectedGameId) : {}}></ButtonIcon>
                     <div className={styles.gameCardWrapper}>
                         <GamePreviewCard></GamePreviewCard>
                     </div>
-                    <ButtonIcon iconType={"goRight"} onClick={() => props.swipeRight(props.gameId)}></ButtonIcon>
+                    <ButtonIcon iconType={"goRight"} onClick={() => props.selectedGameId !== undefined ? props.swipeRight(props.selectedGameId) : {}}></ButtonIcon>
                 </div>
             </div>
             <div className={styles.gameCollectionButton}>
