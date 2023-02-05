@@ -1,21 +1,16 @@
 type EditorType = {
-    gameCollection: GameCollectionType
-}
-
-type CardType = {
-    viewStyle: 'seasonCard' | 'gameCard',
-    text: string,
-    imageSrc?: string,
+    collections: Array<GameCollectionType>,
+    currentSeason: string,
 }
 
 type GameCollectionType = {
-    games: Array<GameType>
-    selectedGameId: number
+    games: Array<GameType>,
+    selectedGameId: string,
+    season: string,
 }
 
 type GameType = {
-    id: number,
-    season: string,
+    id: string,
     imageSrc: string,
     author: string,
     title: string,
@@ -27,4 +22,11 @@ type SearchType = {
     input?: string
 }
 
-export type {CardType, GameType, EditorType, GameCollectionType, SearchType}
+enum Actions {
+    SET_CURRENT_SEASON = "SET_CURRENT_SEASON",
+    SWIPE_LEFT = "SWIPE_LEFT",
+    SWIPE_RIGHT = "SWIPE_RIGHT",
+}
+
+export type {GameType, EditorType, GameCollectionType, SearchType}
+export {Actions}

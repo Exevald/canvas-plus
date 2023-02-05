@@ -1,5 +1,5 @@
 import {legacy_createStore as createStore} from 'redux'
-import {EditorType} from "../core/types/types";
+import {EditorType, GameCollectionType, GameType} from "../core/types/types";
 import snake from "../view/images/season-2021/snake.png"
 
 import {editorReducer} from "./entity/editor";
@@ -7,38 +7,50 @@ import {gameReducer} from "./entity/game";
 import {gameCollectionReducer} from "./entity/gameCollection";
 
 let initialState: EditorType = {
-    gameCollection: {
-        games: [
-            {
-                id: 0,
-                imageSrc: snake,
-                author: 'Долгирев Алексей',
-                title: 'Creado Snake',
-                info: '',
-                season: "2021",
-                countOfLikes: 1
-            },
-            {
-                id: 1,
-                imageSrc: snake,
-                author: 'Красильников Богдан',
-                title: 'Freedomcactus',
-                info: '',
-                season: "2021",
-                countOfLikes: 0
-            },
-            {
-                id: 2,
-                imageSrc: snake,
-                author: 'Калинин Константин',
-                title: 'Helltaker',
-                info: '',
-                season: "2022",
-                countOfLikes: 0
-            }
-        ],
-        selectedGameId: 0
-    }
+    collections: [
+        {
+            games: [
+                {
+                    id: "0",
+                    imageSrc: snake,
+                    author: 'Долгирев Алексей',
+                    title: 'Creado Snake',
+                    info: '',
+                    countOfLikes: 1
+                },
+                {
+                    id: "1",
+                    imageSrc: snake,
+                    author: 'Красильников Богдан',
+                    title: 'Freedomcactus',
+                    info: '',
+                    countOfLikes: 0
+                },
+            ],
+            selectedGameId: "0",
+            season: "2021"
+        },
+        {
+            games: [
+                {
+                    id: "2",
+                    imageSrc: snake,
+                    author: 'Калинин Константин',
+                    title: 'Helltaker',
+                    info: '',
+                    countOfLikes: 0
+                }
+            ],
+            selectedGameId: "2",
+            season: "2022"
+        },
+        {
+            games: [],
+            selectedGameId: "0",
+            season: "2023"
+        },
+    ],
+    currentSeason: "2021"
 }
 
 type ActionType = {
@@ -47,15 +59,19 @@ type ActionType = {
     setLike?: string,
     swipeLeft?: string,
     swipeRight?: string,
-    gameId?: number,
-    gameTitle?: string
+    gameId?: string,
+    gameTitle?: string,
+    newSeason?: string,
 }
 
 function mainReducer(state: EditorType, action: ActionType) {
     const newState: EditorType = editorReducer(state, action);
-    newState.gameCollection = gameCollectionReducer(newState.gameCollection, action)
-    let selectedGameState = newState.gameCollection.games[newState.gameCollection.selectedGameId]
-    gameReducer(selectedGameState, action)
+    const selectedGameCollectionIndex: number = state.collections.findIndex(collection => collection.season === state.currentSeason);
+    const selectedGameCollectionState: GameCollectionType = newState.collections[selectedGameCollectionIndex];
+    const selectedGameIndex: number = selectedGameCollectionState.games.findIndex(game => game.id === selectedGameCollectionState.selectedGameId);
+    const selectedGameState: GameType = selectedGameCollectionState.games[selectedGameIndex];
+    newState.collections.splice(selectedGameCollectionIndex, 1, gameCollectionReducer(selectedGameCollectionState, action));
+    gameReducer(selectedGameState, action);
     return newState;
 }
 

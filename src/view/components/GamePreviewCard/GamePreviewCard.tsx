@@ -7,13 +7,17 @@ import {connect, ConnectedProps} from "react-redux";
 import {EditorType} from "../../../core/types/types";
 
 function mapStateToProps(state: EditorType) {
-    const selectedGameId = state.gameCollection.selectedGameId;
-    return {
-        countOfLikes: state.gameCollection.games[selectedGameId].countOfLikes,
-        imageSrc: state.gameCollection.games[selectedGameId].imageSrc,
-        author: state.gameCollection.games[selectedGameId].author,
-        gameTitle: state.gameCollection.games[selectedGameId].title,
-        info: state.gameCollection.games[selectedGameId].info,
+    const currentSeason = state.currentSeason;
+    const currentGameCollection = state.collections.find(collection => collection.season === currentSeason);
+    const selectedGameIndex = currentGameCollection?.games.findIndex(game => game.id === currentGameCollection.selectedGameId);
+    if (selectedGameIndex !== undefined) {
+        return {
+            countOfLikes: currentGameCollection?.games[selectedGameIndex].countOfLikes,
+            imageSrc: currentGameCollection?.games[selectedGameIndex].imageSrc,
+            author: currentGameCollection?.games[selectedGameIndex].author,
+            gameTitle: currentGameCollection?.games[selectedGameIndex].title,
+            info: currentGameCollection?.games[selectedGameIndex].info,
+        }
     }
 }
 
@@ -31,12 +35,14 @@ const GamePreviewCard = (props: GamePreviewCardProps) => {
         <div className={styles.gamePreviewCard}>
             <div className={styles.gamePreviewCardTopWrapper}>
                 <div className={styles.gameTopInfoArea}>
-                    <ButtonIcon onClick={() => {}} iconType={"info"}></ButtonIcon>
+                    <ButtonIcon onClick={() => {
+                    }} iconType={"info"}></ButtonIcon>
                     <div className={styles.likeAreaWrapper}>
                         {props.countOfLikes !== 0 &&
                             <p className={styles.countOfLikesWrapper}>{props.countOfLikes}</p>
                         }
-                        <ButtonIcon onClick={() => props.setLike()} iconType={"like"}></ButtonIcon>
+                        <ButtonIcon onClick={() => {
+                        }} iconType={"like"}></ButtonIcon>
                     </div>
                 </div>
                 <div className={`${styles.gameDescriptionArea}`}></div>
@@ -47,7 +53,8 @@ const GamePreviewCard = (props: GamePreviewCardProps) => {
                     <p>Автор: {props.author}</p>
                     <p>Игра: {props.gameTitle}</p>
                 </div>
-                <Button onClick={() => {}} viewStyle={"default"} text={"Поиграть!"} pos={"gamePreviewCard"}></Button>
+                <Button onClick={() => {
+                }} viewStyle={"default"} text={"Поиграть!"} pos={"gamePreviewCard"}></Button>
             </div>
         </div>
     )
