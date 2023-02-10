@@ -1,7 +1,6 @@
 import {Actions} from "../core/types/types";
 
 function swipeGameLeft(gameId: string) {
-    console.log("a l")
     return {
         type: Actions.SWIPE_LEFT,
         gameId: gameId,
@@ -9,7 +8,6 @@ function swipeGameLeft(gameId: string) {
 }
 
 function swipeGameRight(gameId: string) {
-    console.log("a r")
     return {
         type: Actions.SWIPE_RIGHT,
         gameId: gameId,

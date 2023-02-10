@@ -23,8 +23,8 @@ function mapStateToProps(state: EditorType) {
 
 function mapDispatchToProps(dispatcher: AppDispatch) {
     return {
-        swipeLeft: (gameId: string) => swipeGameLeft(gameId),
-        swipeRight: (gameId: string) => swipeGameRight(gameId),
+        swipeLeft: (gameId: string) => dispatcher(swipeGameLeft(gameId)),
+        swipeRight: (gameId: string) => dispatcher(swipeGameRight(gameId)),
     }
 }
 

@@ -1,5 +1,5 @@
 import styles from "./Search.module.css"
-import {ButtonIcon} from "../Button/Button";
+import { ButtonIcon } from "../Button/Button";
 
 const Search = () => {
     return (
@@ -9,9 +9,9 @@ const Search = () => {
                 className={styles.input}
             >
             </input>
-            <ButtonIcon iconType={"lens"} onClick={() => {}}></ButtonIcon>
+            <ButtonIcon iconType={"lens"} onClick={() => { }}></ButtonIcon>
         </div>
     )
 }
 
-export {Search}
+export { Search }

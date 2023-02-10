@@ -1,13 +1,15 @@
-import {ActionType} from "../store";
-import {GameCollectionType} from "../../core/types/types";
-import {deepClone} from "../../core/functions/deepClone";
+import { ActionType } from "../store";
+import { GameCollectionType } from "../../core/types/types";
+import { deepClone } from "../../core/functions/deepClone";
 
 function swipeGameLeftReducer(gameCollection: GameCollectionType, gameId: string): GameCollectionType {
     const gameIndex = gameCollection.games.findIndex(game => game.id === gameId);
-    console.log("lllll")
-    let newGameIndex = gameIndex - 1;
+    let newGameIndex = gameIndex;
     if (newGameIndex === 0) {
         newGameIndex = gameCollection.games.length - 1;
+    }
+    else {
+        newGameIndex = gameIndex - 1;
     }
     const newGameId = gameCollection.games[newGameIndex].id;
     return {
@@ -17,11 +19,13 @@ function swipeGameLeftReducer(gameCollection: GameCollectionType, gameId: string
 }
 
 function swipeGameRightReducer(gameCollection: GameCollectionType, gameId: string): GameCollectionType {
-    console.log("rrrr")
     const gameIndex = gameCollection.games.findIndex(game => game.id === gameId);
-    let newGameIndex = gameIndex + 1;
+    let newGameIndex = gameIndex;
     if (newGameIndex === gameCollection.games.length - 1) {
         newGameIndex = 0;
+    }
+    else {
+        newGameIndex = gameIndex + 1;
     }
     const newGameId = gameCollection.games[newGameIndex].id;
     return {
@@ -31,19 +35,14 @@ function swipeGameRightReducer(gameCollection: GameCollectionType, gameId: strin
 }
 
 function gameCollectionReducer(state: GameCollectionType, action: ActionType): GameCollectionType {
-    console.log("reducer")
     switch (action.type) {
-        case 'SWIPE_LEFT': {
-            console.log("r l")
+        case 'SWIPE_LEFT':
             return action.gameId !== undefined ? swipeGameLeftReducer(state, action.gameId) : deepClone(state) as GameCollectionType
-        }
-        case 'SWIPE_RIGHT': {
-            console.log("r r")
+        case 'SWIPE_RIGHT':
             return action.gameId !== undefined ? swipeGameRightReducer(state, action.gameId) : deepClone(state) as GameCollectionType
-        }
         default:
             return deepClone(state) as GameCollectionType
     }
 }
 
-export {gameCollectionReducer}
+export { gameCollectionReducer }
