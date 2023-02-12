@@ -28,7 +28,8 @@ let initialState: EditorType = {
                 },
             ],
             selectedGameId: "0",
-            season: "2021"
+            season: "2021",
+            searchingGameTitle: "",
         },
         {
             games: [
@@ -42,12 +43,14 @@ let initialState: EditorType = {
                 }
             ],
             selectedGameId: "2",
-            season: "2022"
+            season: "2022",
+            searchingGameTitle: ""
         },
         {
             games: [],
             selectedGameId: "0",
-            season: "2023"
+            season: "2023",
+            searchingGameTitle: "",
         },
     ],
     currentSeason: "2021"
@@ -62,6 +65,7 @@ type ActionType = {
     gameId?: string,
     gameTitle?: string,
     newSeason?: string,
+    newSearchingGameTitle?: string,
 }
 
 function mainReducer(state: EditorType, action: ActionType) {

@@ -27,4 +27,18 @@ function setCurrentSeason(newSeason: string) {
     }
 }
 
-export {swipeGameRight, swipeGameLeft, setLike, setCurrentSeason}
+function setSearchingGameTitle(newSearchingGameTitle: string) {
+    return {
+        type: Actions.SET_SEARCHING_GAME_TITLE,
+        newSearchingGameTitle: newSearchingGameTitle,
+    }
+}
+
+function findCurrentGame(newSearchingGameTitle: string) {
+    return {
+        type: Actions.FIND_CURRENT_GAME,
+        newSearchingGameTitle: newSearchingGameTitle,
+    }
+}
+
+export {swipeGameRight, swipeGameLeft, setLike, setCurrentSeason, setSearchingGameTitle, findCurrentGame}

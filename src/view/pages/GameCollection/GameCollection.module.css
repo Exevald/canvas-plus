@@ -36,3 +36,24 @@
     justify-content: center;
     margin-top: 100px;
 }
+
+.findContainer {
+    width: 252px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.name {
+    width: 228px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    color: var(--grey-dark);
+    border: 2px solid var(--purple-default);
+    height: 40px;
+    border-radius: 5px;
+    padding: 0 10px 0 10px;
+}

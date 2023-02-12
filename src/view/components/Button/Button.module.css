@@ -55,6 +55,7 @@
     background: no-repeat url("ButtonIcons/Lens.svg");
     width: 23px;
     height: 23px;
+    margin-left: 15px;
 }
 
 .buttonLens:hover {
