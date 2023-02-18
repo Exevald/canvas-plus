@@ -53,13 +53,17 @@
 }
 
 .likeAreaWrapper {
-    margin-left: 510px;
+    margin-left: 450px;
     display: flex;
     align-self: center;
     margin-right: auto;
+    min-width: 93px;
 }
 
 .countOfLikesWrapper {
     display: flex;
     align-items: center;
+    justify-content: right;
+    text-align: left;
+    min-width: 52px;
 }
