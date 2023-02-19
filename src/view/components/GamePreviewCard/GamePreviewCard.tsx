@@ -57,35 +57,4 @@ function mapDispatchToProps(dispatcher: AppDispatch) {
 const connector = connect(mapStateToProps, mapDispatchToProps);
 type GamePreviewCardProps = ConnectedProps<typeof connector>
 
-<<<<<<< Updated upstream
-=======
-const GamePreviewCard = (props: GamePreviewCardProps) => {
-    return (
-        <div className={styles.gamePreviewCard}>
-            <div className={styles.gamePreviewCardTopWrapper}>
-                <div className={styles.gameTopInfoArea}>
-                    <ButtonIcon onClick={() => {}} iconType={"info"}></ButtonIcon>
-                    <div className={styles.likeAreaWrapper}>
-                        {props.countOfLikes <= 9999
-                            ? <p className={styles.countOfLikesWrapper}>{props.countOfLikes}</p> 
-                            : <p className={styles.countOfLikesWrapper}>+9999</p>
-                        }
-                        <ButtonIcon onClick={() => props.setLike()} iconType={"like"}></ButtonIcon>
-                    </div>
-                </div>
-                <div className={`${styles.gameDescriptionArea}`}></div>
-                <img src={props.imageSrc} alt={"gamePreviewImage"} className={styles.gamePreviewImage}></img>
-            </div>
-            <div className={styles.gameBottomInfoArea}>
-                <div className={styles.textInfoWrapper}>
-                    <p>Автор: {props.author}</p>
-                    <p>Игра: {props.gameTitle}</p>
-                </div>
-                <Button onClick={() => {}} viewStyle={"default"} text={"Поиграть!"} pos={"gamePreviewCard"}></Button>
-            </div>
-        </div>
-    )
-}
-
->>>>>>> Stashed changes
 export default connect(mapStateToProps, mapDispatchToProps)(GamePreviewCard)
