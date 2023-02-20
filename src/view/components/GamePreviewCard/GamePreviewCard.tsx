@@ -3,7 +3,7 @@ import { Button, ButtonIcon } from "../Button/Button";
 import { AppDispatch } from "../../../model/store";
 import { setLike } from "../../../model/actionCreators";
 import { connect, ConnectedProps } from "react-redux";
-import { EditorType } from "../../../core/types/types";
+import { EditorType } from "../../../model/types/types";
 
 const GamePreviewCard = (props: GamePreviewCardProps) => {
     return (
@@ -14,7 +14,7 @@ const GamePreviewCard = (props: GamePreviewCardProps) => {
                     <div className={styles.likeAreaWrapper}>
                         {
                             props.countOfLikes !== 0 &&
-                            <p className={styles.countOfLikesWrapper}>{props.countOfLikes}</p>
+                            /*CR add tab*/<p className={styles.countOfLikesWrapper}>{props.countOfLikes}</p>
                         }
                         <ButtonIcon onClick={() => { }} iconType={"like"}></ButtonIcon>
                     </div>

@@ -1,8 +1,9 @@
-import {GameType} from "../../core/types/types";
+import {GameType} from "../types/types";
 import {ActionType} from "../store";
 import {deepClone} from "../../core/functions/deepClone";
 
 function setLikeReducer(game: GameType): GameType {
+    // CR deepClone(Game)
     return {
         ...game,
         countOfLikes: game.countOfLikes++

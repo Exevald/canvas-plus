@@ -1,5 +1,5 @@
 import {ActionType} from "../store";
-import {Actions, GameCollectionType} from "../../core/types/types";
+import {Actions, GameCollectionType} from "../types/types";
 import {deepClone} from "../../core/functions/deepClone";
 
 function swipeGameLeftReducer(gameCollection: GameCollectionType, gameId: string): GameCollectionType {
@@ -52,6 +52,8 @@ function findCurrentGameReducer(gameCollection: GameCollectionType, gameTitle: s
 }
 
 function gameCollectionReducer(state: GameCollectionType, action: ActionType): GameCollectionType {
+    // CR объект state переносится у нас по ссылке, а не по значению
+    // нам надо возвращать полностью новый объект
     switch (action.type) {
         case Actions.SWIPE_LEFT:
             return action.gameId !== undefined ? swipeGameLeftReducer(state, action.gameId) : deepClone(state) as GameCollectionType;

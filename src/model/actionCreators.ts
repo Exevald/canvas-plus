@@ -1,9 +1,11 @@
-import {Actions} from "../core/types/types";
+import {Actions} from "./types/types";
 
+// CR Посмотреть можно ли указать тип возвращаемого значения и имеет ли это смысл
 function swipeGameLeft(gameId: string) {
     return {
         type: Actions.SWIPE_LEFT,
         gameId: gameId,
+        // CR можно не указывать поле, если название совпадает с названием аттрибута
     }
 }
 
@@ -41,4 +43,5 @@ function findCurrentGame(newSearchingGameTitle: string) {
     }
 }
 
+// CR Разнести по строкам
 export {swipeGameRight, swipeGameLeft, setLike, setCurrentSeason, setSearchingGameTitle, findCurrentGame}

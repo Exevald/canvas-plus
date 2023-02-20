@@ -3,7 +3,7 @@ import logoImage from "../../images/main-menu/logo.svg"
 import { Button } from "../Button/Button";
 
 interface TopPanelProps {
-    viewStyle: 'mainMenu' | 'gameCollection'
+    viewStyle: 'mainMenu' | 'gameCollection' // CR Перевести на enum?
 }
 
 const TopPanel = (props: TopPanelProps) => {

@@ -3,7 +3,7 @@ import {TopPanel} from "../../components/TopPanel/TopPanel";
 import GamePreviewCard from "../../components/GamePreviewCard/GamePreviewCard";
 import {Button, ButtonIcon} from "../../components/Button/Button";
 
-import {EditorType} from "../../../core/types/types";
+import {EditorType} from "../../../model/types/types";
 import {connect, ConnectedProps} from "react-redux";
 
 import {AppDispatch} from "../../../model/store";
@@ -11,14 +11,15 @@ import {setSearchingGameTitle, swipeGameLeft, swipeGameRight, findCurrentGame} f
 import {useState} from "react";
 import TextArea from "../../components/TextArea/TextArea";
 
-function mapStateToProps(state: EditorType) {
+function mapStateToProps(state: EditorType) { // CR Перенсти вниз
     const currentSeason = state.currentSeason;
     const currentGameCollection = state.collections.find(collection => collection.season === currentSeason);
+    // CR "?" заменять явными проверками (if или тернарный оператор)
     const selectedGameIndex = currentGameCollection?.games.findIndex(game => game.id === currentGameCollection.selectedGameId)
-    if (selectedGameIndex !== undefined) {
+    if (selectedGameIndex !== undefined /* CR: !selectedGameIndex */) {
         return {
-            selectedGameId: currentGameCollection?.games[selectedGameIndex].id,
-            searchingGameTitle: currentGameCollection?.searchingGameTitle,
+            selectedGameId: currentGameCollection?.games[selectedGameIndex].id, // CR: Убрать ?
+            searchingGameTitle: currentGameCollection?.searchingGameTitle, // CR: Убрать ?
         }
     }
 }
@@ -39,7 +40,7 @@ const GameCollection = (props: GameCollectionProps) => {
     const [find, startFind] = useState(false);
     return (
         <div>
-            <TopPanel viewStyle={"gameCollection"}></TopPanel>
+            <TopPanel viewStyle={"gameCollection"} /* CR почему двойные теги? */></TopPanel>
             <div className={styles.gameCollectionArea}>
                 <div className={styles.searchAreaWrapper}>
                     <div className={styles.searchArea}>
@@ -54,7 +55,7 @@ const GameCollection = (props: GameCollectionProps) => {
                                             startFind(false);
                                             props.findCurrentGame(value);
                                         }}
-                                    />
+                                    /> /* CR Форматирование тернарного оператора */
                                     : <p className={styles.name}>{props.searchingGameTitle}</p>
                             }
                             <ButtonIcon onClick={() => startFind(!find)} iconType={"lens"}></ButtonIcon>
@@ -63,14 +64,14 @@ const GameCollection = (props: GameCollectionProps) => {
                     </div>
 
                 </div>
-                <div className={styles.sliderAreaWrapper}>
+                <div className={styles.sliderAreaWrapper} /* CR форматирование */>
                     <ButtonIcon iconType={"goLeft"}
-                                onClick={() => props.selectedGameId !== undefined ? props.swipeLeft(props.selectedGameId) : {}}></ButtonIcon>
+                                onClick={() => props.selectedGameId !== undefined /* CR !var */ ? props.swipeLeft(props.selectedGameId) : {}}></ButtonIcon>
                     <div className={styles.gameCardWrapper}>
                         <GamePreviewCard></GamePreviewCard>
                     </div>
                     <ButtonIcon iconType={"goRight"}
-                                onClick={() => props.selectedGameId !== undefined ? props.swipeRight(props.selectedGameId) : {}}></ButtonIcon>
+                                onClick={() => props.selectedGameId !== undefined /* CR !var */ ? props.swipeRight(props.selectedGameId) : {}}></ButtonIcon>
                 </div>
             </div>
             <div className={styles.gameCollectionButton}>

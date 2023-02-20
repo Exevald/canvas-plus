@@ -8,8 +8,8 @@ import Card from "../../components/Card/Card";
 
 const MainMenu = () => {
     return (
-        <div>
-            <TopPanel viewStyle={"mainMenu"}></TopPanel>
+        <div /*CR class?*/>
+            <TopPanel viewStyle={"mainMenu"} /* CR Почему они все пишутся как двойные теги?*/></TopPanel>
             <div className={styles.seasonCards}>
                 <div className={styles.cardsWrapper}>
                     <Card viewStyle={"seasonCard"} season={"2021"} imageSrc={Season2021Image}></Card>
@@ -22,3 +22,4 @@ const MainMenu = () => {
 }
 
 export {MainMenu}
+// CR Почему без connect()()?

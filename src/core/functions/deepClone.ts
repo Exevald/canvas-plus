@@ -1,3 +1,5 @@
+// CR Проверить работы функции с null
+
 function deepClone <T> (source: T): { [k: string]: any } {
     const results: { [k: string]: any } = Array.isArray(source) ? [] : {};
     for (const P in source) {

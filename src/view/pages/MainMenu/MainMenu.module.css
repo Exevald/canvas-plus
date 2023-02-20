@@ -1,8 +1,8 @@
 .seasonCards {
-    padding-top: 150px;
+    padding-top: 150px; /* CR объеденить в один padding */
     padding-left: 0;
 }
-
+/* CR Пока компонентов не много есть предложение перевести названия классов snake_case */
 .cardsWrapper {
     display: flex;
     justify-content: space-evenly;

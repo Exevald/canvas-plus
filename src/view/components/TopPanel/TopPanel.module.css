@@ -2,7 +2,7 @@
     border-bottom: 2px solid var(--grey-dark);
     height: 10vh;
 }
-
+/* CR snake_case*/
 .logoWrapper {
     max-width: 80%;
     display: flex;

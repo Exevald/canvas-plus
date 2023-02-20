@@ -7,6 +7,8 @@ interface TextAreaProps {
     onKeyUp: (value: string) => void;
 }
 
+// CR Форматирование
+
 const TextArea = ({
                       placeholder = "",
                       onKeyUp,

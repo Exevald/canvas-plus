@@ -1,5 +1,5 @@
 import {legacy_createStore as createStore} from 'redux'
-import {EditorType, GameCollectionType, GameType} from "../core/types/types";
+import {EditorType, GameCollectionType, GameType} from "./types/types";
 import snake from "../view/images/season-2021/snake.png"
 
 import {editorReducer} from "./entity/editor";
@@ -11,7 +11,7 @@ let initialState: EditorType = {
         {
             games: [
                 {
-                    id: "0",
+                    id: "0", // CR: В будущем перевести на uuid
                     imageSrc: snake,
                     author: 'Долгирев Алексей',
                     title: 'Creado Snake',
@@ -68,17 +68,20 @@ type ActionType = {
     newSearchingGameTitle?: string,
 }
 
-function mainReducer(state: EditorType, action: ActionType) {
+function mainReducer(state: EditorType, action: ActionType) /* type */ {
     const newState: EditorType = editorReducer(state, action);
+    // CR Ничего не понятно, надо обговорить что тут происходит
     const selectedGameCollectionIndex: number = state.collections.findIndex(collection => collection.season === state.currentSeason);
     const selectedGameCollectionState: GameCollectionType = newState.collections[selectedGameCollectionIndex];
     const selectedGameIndex: number = selectedGameCollectionState.games.findIndex(game => game.id === selectedGameCollectionState.selectedGameId);
     const selectedGameState: GameType = selectedGameCollectionState.games[selectedGameIndex];
     newState.collections.splice(selectedGameCollectionIndex, 1, gameCollectionReducer(selectedGameCollectionState, action));
     gameReducer(selectedGameState, action);
+    // CR ставьте пустую строчку перед return, не критично, но желательно
     return newState;
 }
 
+// CR Убрать ts-ignore
 // @ts-ignore
 let store = createStore(mainReducer, initialState);
 
